@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <title>DanceRail3缓动slide/hold生成器</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+<noscript>错误：浏览器不支持Javascript或未开启Javascript</noscript>
+<h2>DanceRail3缓动slide/hold生成器</h2>
+<br>
+<div class="settings">
+    <label for="note-id">note编号起始：</label><input type="number" id="note-id" value="267">
+    <br>
+    （警告：编号将会递增，建议使用organize确保该slide头是当前谱面中最后一个note）
+    <br>
+    <br>
+    <label for="note-type">note种类：</label>
+    <select id="note-type">
+        <option>Slide</option>
+        <option>Hold</option>
+        <option>BOOM</option>
+        <option>HPass</option>
+        <option>LPass</option>
+        <option>Mover</option>
+    </select>
+    <label for="note-width">note宽度：</label><input type="number" id="note-width" step="0.01" value="4">
+    <br>
+    <br>
+    <label for="x-start">横坐标起始：</label><input type="number" id="x-start" step="0.01" value="0">
+    <label for="x-end">横坐标结束：</label><input type="number" id="x-end" step="0.01" value="12">
+    <br>
+    <br>
+    <label for="y-start">纵坐标（时间）起始：</label><input type="number" id="y-start" step="0.00001" value="34">
+    <label for="y-end">纵坐标（时间）结束：</label><input type="number" id="y-end" step="0.00001" value="35">
+    <br>
+    <br>
+    <label for="easing">缓动编号(1~29)：</label><input type="number" id="easing" value="2">
+    <button type="button" id="hint">缓动表</button>
+    <label for="note-subdivision">分隔数量：</label><input type="number" id="note-subdivision" value="16">
+    <br>
+    <br>
+    <button type="button" id="start">确定</button>
+</div>
+<br>
+<br>
+输出：<textarea readonly="readonly" id="output"></textarea>
+<div id="hint-background" class="hidden"></div>
+<div id="hint-container" class="hidden">
+    <br>
+    <a href="https://easings.net/" target="_blank">类型详见此链接</a>
+    <br>
+    <table>
+        <tbody>
+        <tr>
+            <th>编号</th>
+            <th>类型</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Linear</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>OutSine</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>InSine</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>OutQuad</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>InQuad</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>InOutSine</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>InOutQuad</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>OutCubic</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>InCubic</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>OutQuart</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>InQuart</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>InOutCubic</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>InOutQuart</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>OutQuint</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>InQuint</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>OutExpo</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>InExpo</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>OutCirc</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>InCirc</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>OutBack</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>InBack</td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>InOutCirc</td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>InOutBack</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>OutElastic</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>InElastic</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>OutBounce</td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>InBounce</td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>InOutBounce</td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>InOutElastic</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
