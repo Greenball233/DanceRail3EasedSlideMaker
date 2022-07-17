@@ -1,4 +1,4 @@
-# DanceRail3EasedSlideMaker
+# DanceRail3CurveNotesMaker
 
 用于生成特殊形状的一组note<br>
 <br>
