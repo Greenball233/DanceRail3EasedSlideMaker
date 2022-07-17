@@ -31,6 +31,11 @@ body {
     overflow: scroll;
 }
 
+#start-note,
+#end-note{
+    width: 50vmin;
+}
+
 #hint-container table {
     line-height: 2;
     margin: 0 auto 5%;
