@@ -87,7 +87,7 @@ noteSubdivition.addEventListener("input", function () {
 function start() {
     let stringBuilder = new StringBuilder();
     let noteTypes = notesTypes[noteType.selectedIndex];
-    let i = parseInt(noteId.value);
+    let i = 10000;
     let xStartValue = parseFloat(xStart.value);
     let xEndValue = parseFloat(xEnd.value);
     let yStartValue = parseFloat(yStart.value);
