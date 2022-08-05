@@ -17,6 +17,15 @@ body {
     bottom: 0;
 }
 
+.serialized-table-container {
+    width: 65vmin;
+    height: 85vh;
+    overflow: scroll;
+    margin: 0 auto;
+}
+.serialized-table-container table{
+    margin: 0 auto;
+}
 #hint-container {
     position: fixed;
     width: 65vmin;
@@ -55,6 +64,8 @@ body {
 }
 
 .hidden {
+    width: 0 !important;
+    height: 0 !important;
     opacity: 0;
     visibility: hidden;
 }
@@ -63,6 +74,7 @@ body {
     align-items: center;
 }
 
+#input,
 #output {
     width: 80vmin;
     height: 100vmin;

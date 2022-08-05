@@ -93,7 +93,7 @@ xEnd = document.getElementById("x-end");
 yStart = document.getElementById("y-start");
 yEnd = document.getElementById("y-end");
 noteType = document.getElementById("note-type");
-noteSubdivition = document.getElementById("note-subdivision");
+noteSubdivition = document.getElementById("subdivision");
 noteId = document.getElementById("note-id");
 startButton.addEventListener("click", start);
 easing.addEventListener("input", function () {
@@ -235,7 +235,6 @@ function parseNote(raw) {
 }
 
 function lerp(a, b, easingId, pos) {
-    console.log(typeof easingId);
     return tween[easingId](pos) * (b - a) + a;
 }
 
