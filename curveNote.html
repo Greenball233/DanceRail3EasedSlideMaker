@@ -2,45 +2,76 @@
 <html lang="zh_cn">
 <head>
     <meta charset="UTF-8">
-    <title>变速sc生成</title>
+    <title>DanceRail3曲线Note生成器</title>
     <link rel="stylesheet" href="./main.css">
 </head>
 <body>
 <noscript>错误：浏览器不支持Javascript或未开启Javascript</noscript>
 <a href="index.html" class="back">返回主页</a>
-<h2>DanceRail3曲线变化SC生成器</h2>
+<h2>DanceRail3曲线Note生成器</h2>
 <br>
 <div class="settings">
-    <label for="input">输入完整sc表：</label><br><textarea id="input">
-#SCN=3;
-#SC [0]=1;
-#SCI[0]=0.000;
-#SC [1]=2;
-#SCI[1]=2.000;
-#SC [2]=1;
-#SCI[2]=4.000;
-</textarea>
+    <label for="note-id">note编号起始：</label><input type="number" id="note-id" value="10000">
+    <br>
+    （警告：编号将会递增，建议使用organize确保该slide头是当前谱面中最后一个note）
     <br>
     <br>
-    <button type="button" id="generate">生成SC表格</button>
-    <button id="hint" type="button">缓动表</button>
+    <label for="note-type">note种类：</label>
+    <select id="note-type">
+        <option>Slide</option>
+        <option>Hold</option>
+        <option>BOOM</option>
+        <option>HPass</option>
+        <option>LPass</option>
+        <option>Mover</option>
+        <option>Slide(Start Only)</option>
+        <option>Hold(Start Only)</option>
+        <option>BOOM(Start Only)</option>
+        <option>Tap</option>
+        <option>ExTap</option>
+        <option>Flick(Left)</option>
+        <option>Flick(Right)</option>
+        <option>Flick(Up)</option>
+        <option>Flick(Down)</option>
+        <option>Flick(No Direction)</option>
+    </select>
+    <label for="note-width">note宽度：</label><input type="number" id="note-width" step="0.01" value="4">
     <br>
     <br>
-    <div class="serialized-table-container hidden" id="serialized-table-container">
-        <table id="serialized-sc-table">
-            <tr>
-                <th>进行插值</th>
-                <th>SCI</th>
-                <th>SC</th>
-                <th>缓动编号</th>
-                <th>拟合精度</th>
-            </tr>
-        </table>
-    </div>
+    <label for="x-start">横坐标起始：</label><input type="number" id="x-start" step="0.01">
+    <label for="x-end">横坐标结束：</label><input type="number" id="x-end" step="0.01">
+    <br>
+    <br>
+    <label for="y-start">纵坐标（时间）起始：</label><input type="number" id="y-start" step="0.00001">
+    <label for="y-end">纵坐标（时间）结束：</label><input type="number" id="y-end" step="0.00001">
+    <br>
+    <br>
+    <label for="easing">缓动编号(1~29)：</label><input type="number" id="easing" value="1">
+    <button type="button" id="hint">缓动表</button>
+    <label for="subdivision">分隔数量：</label><input type="number" id="subdivision" value="2">
+    <br>
+    <br>
+    <input type="checkbox" id="output-first-note" checked="checked"><label for="output-first-note">输出第一个note</label>
+    <input type="checkbox" id="is-center"><label for="is-center">将end改为center</label>
+    <br>
+    <br>
+    <button type="button" id="start">确定</button>
+    <br>
+    <br>
+    或者，在这里输入起点与终点的note语句（请务必在上方指定缓动类型和分割数量！）
+    <br>
+    <br>
+    <label for="start-note">起始note：</label><input type="text" id="start-note">
+    <br>
+    <br>
+    <label for="end-note">终止note：</label><input type="text" id="end-note">
+    <br>
+    <br>
+    <button type="button" id="start-with-note">使用note开始</button>
+    <input type="checkbox" id="output-start-and-end"><label for="output-start-and-end">不输出头尾并将note编号加10000</label>
 </div>
 <br>
 <br>
-<button onclick="startLerp()" type="button" id="start-lerp">开始插值</button>
 <label for="output">输出：</label><textarea readonly="readonly" id="output"></textarea>
 <div id="hint-background" class="hidden"></div>
 <div id="hint-container" class="hidden">
@@ -174,5 +205,5 @@
 </div>
 </body>
 <script src="lib.js"></script>
-<script src="curveSC.js"></script>
+<script src="script.js"></script>
 </html>
