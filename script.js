@@ -40,9 +40,6 @@ const typesNotes = {
     16: 14,
     9: 15
 }
-hintBackground = document.getElementById("hint-background");
-hintcontainer = document.getElementById("hint-container");
-hint = document.getElementById("hint");
 output = document.getElementById("output");
 startButton = document.getElementById("start");
 outputFirstNote = document.getElementById("output-first-note");
@@ -62,30 +59,25 @@ noteType = document.getElementById("note-type");
 noteSubdivition = document.getElementById("subdivision");
 noteId = document.getElementById("note-id");
 startButton.addEventListener("click", start);
-easing.addEventListener("input", function () {
-    if (this.value > 29) this.value = 29;
-    if (this.value < 1) this.value = 1;
-});
-hintBackground.addEventListener("click", function () {
-    hintBackground.classList.add("hidden");
-    hintcontainer.classList.add("hidden");
-});
-hint.addEventListener("click", function () {
-    hintBackground.classList.remove("hidden");
-    hintcontainer.classList.remove("hidden");
-});
 startWithNote.addEventListener("click", startWithNotes)
 noteWidth.addEventListener("input", function () {
     if (this.value < 0.5) this.value = 0.5;
 });
 noteId.addEventListener("input", function () {
     if (this.value < 0) this.value = 0;
+    if (this.value === "") this.value = 10000;
 });
+xStart.addEventListener("input", function () {
+    if (this.value === "") this.value = 0;
+})
+xEnd.addEventListener("input", function () {
+    if (this.value === "") this.value = 0;
+})
 yStart.addEventListener("input", function () {
-    if (this.value < 0) this.value = 0;
+    if (this.value < 0 || this.value === "") this.value = 0;
 })
 yEnd.addEventListener("input", function () {
-    if (this.value < 0) this.value = 0;
+    if (this.value < 0 || this.value === "") this.value = 0;
 })
 noteSubdivition.addEventListener("input", function () {
     if (this.value < 1) this.value = 1;
@@ -99,7 +91,7 @@ function start() {
     let xEndValue = parseFloat(xEnd.value);
     let yStartValue = parseFloat(yStart.value);
     let yEndValue = parseFloat(yEnd.value);
-    let easingId = parseInt(easing.value);
+    let easingId = easing.selectedIndex + 1;
     let subdivision = parseInt(noteSubdivition.value);
     let noteWidthValue = parseFloat(noteWidth.value);
     let outputFirstNoteValue = outputFirstNote.checked;
@@ -165,7 +157,7 @@ function startWithNotes() {
     let xEndValue = parseFloat(endNoteArgs[3]);
     let yStartValue = parseFloat(startNoteArgs[2]);
     let yEndValue = parseFloat(endNoteArgs[2]);
-    let easingId = parseInt(easing.value);
+    let easingId = easing.selectedIndex + 1;
     let subdivision = parseInt(noteSubdivition.value);
     let noteWidthValue = parseFloat(startNoteArgs[4]);
     if (yStartValue >= yEndValue) {

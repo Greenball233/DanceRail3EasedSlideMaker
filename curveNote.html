@@ -38,16 +38,46 @@
     <label for="note-width">note宽度：</label><input type="number" id="note-width" step="0.01" value="4">
     <br>
     <br>
-    <label for="x-start">横坐标起始：</label><input type="number" id="x-start" step="0.01">
-    <label for="x-end">横坐标结束：</label><input type="number" id="x-end" step="0.01">
+    <label for="x-start">横坐标起始：</label><input type="number" id="x-start" step="0.01" value="0">
+    <label for="x-end">横坐标结束：</label><input type="number" id="x-end" step="0.01" value="0">
     <br>
     <br>
-    <label for="y-start">纵坐标（时间）起始：</label><input type="number" id="y-start" step="0.00001">
-    <label for="y-end">纵坐标（时间）结束：</label><input type="number" id="y-end" step="0.00001">
+    <label for="y-start">纵坐标（时间）起始：</label><input type="number" id="y-start" step="0.00001" value="0">
+    <label for="y-end">纵坐标（时间）结束：</label><input type="number" id="y-end" step="0.00001" value="0">
     <br>
     <br>
-    <label for="easing">缓动编号(1~29)：</label><input type="number" id="easing" value="1">
-    <button type="button" id="hint">缓动表</button>
+    <label for="easing">缓动编号(1~29)：</label>
+    <select id="easing">
+        <option>Linear</option>
+        <option>OutSine</option>
+        <option>InSine</option>
+        <option>OutQuad</option>
+        <option>InQuad</option>
+        <option>InOutSine</option>
+        <option>InOutQuad</option>
+        <option>OutCubic</option>
+        <option>InCubic</option>
+        <option>OutQuart</option>
+        <option>InQuart</option>
+        <option>InOutCubic</option>
+        <option>InOutQuart</option>
+        <option>OutQuint</option>
+        <option>InQuint</option>
+        <option>OutExpo</option>
+        <option>InExpo</option>
+        <option>OutCirc</option>
+        <option>InCirc</option>
+        <option>OutBack</option>
+        <option>InBack</option>
+        <option>InOutCirc</option>
+        <option>InOutBack</option>
+        <option>OutElastic</option>
+        <option>InElastic</option>
+        <option>OutBounce</option>
+        <option>InBounce</option>
+        <option>InOutBounce</option>
+        <option>InOutElastic</option>
+    </select>
     <label for="subdivision">分隔数量：</label><input type="number" id="subdivision" value="2">
     <br>
     <br>
@@ -73,136 +103,6 @@
 <br>
 <br>
 <label for="output">输出：</label><textarea readonly="readonly" id="output"></textarea>
-<div id="hint-background" class="hidden"></div>
-<div id="hint-container" class="hidden">
-    <br>
-    <a href="https://easings.net/" target="_blank">类型详见此链接</a>
-    <br>
-    <table>
-        <tbody>
-        <tr>
-            <th>编号</th>
-            <th>类型</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Linear</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>OutSine</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>InSine</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>OutQuad</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>InQuad</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>InOutSine</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>InOutQuad</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>OutCubic</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>InCubic</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>OutQuart</td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>InQuart</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>InOutCubic</td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>InOutQuart</td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>OutQuint</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>InQuint</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>OutExpo</td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>InExpo</td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>OutCirc</td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>InCirc</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>OutBack</td>
-        </tr>
-        <tr>
-            <td>21</td>
-            <td>InBack</td>
-        </tr>
-        <tr>
-            <td>22</td>
-            <td>InOutCirc</td>
-        </tr>
-        <tr>
-            <td>23</td>
-            <td>InOutBack</td>
-        </tr>
-        <tr>
-            <td>24</td>
-            <td>OutElastic</td>
-        </tr>
-        <tr>
-            <td>25</td>
-            <td>InElastic</td>
-        </tr>
-        <tr>
-            <td>26</td>
-            <td>OutBounce</td>
-        </tr>
-        <tr>
-            <td>27</td>
-            <td>InBounce</td>
-        </tr>
-        <tr>
-            <td>28</td>
-            <td>InOutBounce</td>
-        </tr>
-        <tr>
-            <td>29</td>
-            <td>InOutElastic</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 </body>
 <script src="lib.js"></script>
 <script src="script.js"></script>
