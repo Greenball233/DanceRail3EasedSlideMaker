@@ -40,24 +40,24 @@ const typesNotes = {
     16: 14,
     9: 15
 }
-output = document.getElementById("output");
-startButton = document.getElementById("start");
-outputFirstNote = document.getElementById("output-first-note");
-isCenter = document.getElementById("is-center");
-startNote = document.getElementById("start-note");
-endNote = document.getElementById("end-note");
-startWithNote = document.getElementById("start-with-note");
-outputStartAndEnd = document.getElementById("output-start-and-end");
+const output = document.getElementById("output");
+const startButton = document.getElementById("start");
+const outputFirstNote = document.getElementById("output-first-note");
+const isCenter = document.getElementById("is-center");
+const startNote = document.getElementById("start-note");
+const endNote = document.getElementById("end-note");
+const startWithNote = document.getElementById("start-with-note");
+const outputStartAndEnd = document.getElementById("output-start-and-end");
 
-easing = document.getElementById("easing");
-noteWidth = document.getElementById("note-width");
-xStart = document.getElementById("x-start");
-xEnd = document.getElementById("x-end");
-yStart = document.getElementById("y-start");
-yEnd = document.getElementById("y-end");
-noteType = document.getElementById("note-type");
-noteSubdivition = document.getElementById("subdivision");
-noteId = document.getElementById("note-id");
+const easing = document.getElementById("easing");
+const noteWidth = document.getElementById("note-width");
+const xStart = document.getElementById("x-start");
+const xEnd = document.getElementById("x-end");
+const yStart = document.getElementById("y-start");
+const yEnd = document.getElementById("y-end");
+const noteType = document.getElementById("note-type");
+const noteSubdivition = document.getElementById("subdivision");
+const noteId = document.getElementById("note-id");
 startButton.addEventListener("click", start);
 startWithNote.addEventListener("click", startWithNotes)
 noteWidth.addEventListener("input", function () {
@@ -125,6 +125,7 @@ function start() {
         i++;
     }
     output.value = stringBuilder.toString();
+    noteId.value = i.toString();
     easing.disabled = false;
     noteWidth.disabled = false;
     xStart.disabled = false;
@@ -177,13 +178,18 @@ function startWithNotes() {
                 1,
                 (!noteTypes[3]) ? 0 : ((j === 1) ? startNoteArgs[0] : i - 1)
             ]));
-        } else if (j === subdivision && !outputStartAndEndValue) {
-            endNoteArgs[6] = i - 1;
-            stringBuilder.append(noteBuilder(endNoteArgs));
+        } else if (!outputStartAndEndValue) {
+            if (j === subdivision) {
+                endNoteArgs[0] = i;
+                endNoteArgs[6] = i - 1;
+                stringBuilder.append(noteBuilder(endNoteArgs));
+            }
         }
         i++;
     }
     output.value = stringBuilder.toString();
+    startNote.value = endNoteRaw;
+    endNote.value = "";
     startNote.disabled = false;
     endNote.disabled = false;
 }
