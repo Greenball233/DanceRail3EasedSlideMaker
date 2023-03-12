@@ -4,10 +4,9 @@
   "description": "Some Tools for DanceRail3 Fanmade works",
   "main": "index.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "package": "electron-packager ./ DanceRail3Tookit --out ./out --app-version 1.0.0 --overwrite --icon=./favicon.ico"
   },
   "repository": {
     "type": "git",
@@ -20,44 +19,8 @@
   },
   "homepage": "https://github.com/JIMENGAME/DanceRail3Toolkit#readme",
   "devDependencies": {
-    "electron": "^23.1.2"
-  },
-  "build": {
-    "productName": "Dancerail3 Toolkit",
-    "appId": "com.jimengame.dancerail3toolkit",
-    "copyright": "©JIMENGAME",
-    "directories": {
-      "output": "out"
-    },
-    "win": {
-      "icon": "./favicon.ico",
-      "target": [
-        {
-          "target": "nsis"
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true,
-      "installerIcon": "./favicon.ico",
-      "uninstallerIcon": "./favicon.ico",
-      "installerHeaderIcon": "./favicon.ico",
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "DanceRail3 Toolkit"
-    },
-    "files": [
-      "**/*",
-      "!LICENSE",
-      "!README.md",
-      "!**/node_modules/*",
-      "!example.png"
-    ]
-  },
-  "dependencies": {
-    "@electron/asar": "^3.2.3",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron": "^23.1.2",
+    "electron-packager": "^17.1.1",
+    "@electron/get": "^2.0.2"
   }
 }
