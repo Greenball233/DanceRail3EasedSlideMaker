@@ -13,6 +13,7 @@ let coverUrl = "";
 startButton.addEventListener("click", draw);
 window.addEventListener("load", function () {
     coverFileInput.disabled = false;
+    Preload();
     drawPlaceholder();
 });
 coverFileInput.addEventListener("change", readCover);
@@ -300,4 +301,13 @@ function download() {
     document.body.appendChild(downloadElement);
     downloadElement.click();
     downloadElement.remove();
+}
+function Preload() {
+    let textCanvas = document.createElement("canvas");
+    textCanvas.height = canvas.height;
+    textCanvas.width = canvas.width;
+    let ctx1 = textCanvas.getContext("2d");
+    ctx1.font = "1px HGR";
+    ctx1.fillText('', 0, 0);
+    textCanvas.remove();
 }

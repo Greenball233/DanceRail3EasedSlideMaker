@@ -1,6 +1,6 @@
 @font-face {
     font-family: Arial;
-    src: url("./res/Arial.ttf");
+    src: url("./res/Arial.ttf") format("truetype");
 }
 
 .cover-file {

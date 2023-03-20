@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/JIMENGAME/DanceRail3Toolkit#readme",
   "devDependencies": {
+    "@electron/get": "^2.0.2",
     "electron": "^23.1.2",
-    "electron-packager": "^17.1.1",
-    "@electron/get": "^2.0.2"
+    "electron-packager": "^17.1.1"
+  },
+  "dependencies": {
+    "fontfaceobserver": "^2.3.0"
   }
 }
