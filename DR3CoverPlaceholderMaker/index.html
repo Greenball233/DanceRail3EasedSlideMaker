@@ -9,10 +9,23 @@
 <noscript>错误：浏览器不支持Javascript或未开启Javascript</noscript>
 <a href=".." class="back">返回主页</a>
 <br>
-<canvas id="canvas" width="512" height="512"></canvas>
+<canvas id="canvas" width="300" height="300"></canvas>
 <br>
-<label for="song-name">曲名：</label><input type="text" id="song-name">
-<label for="song-artist">曲师：</label><input type="text" id="song-artist">
+<br>
+<label for="song-name-size">曲名字体大小</label><input type="number" step="1" id="song-name-size" value="42">
+<br>
+<label for="song-artist-size">曲师字体大小：</label><input type="number" step="1" id="song-artist-size" value="37">
+<br>
+<br>
+<label for="song-name-pos">曲名位置：</label><input type="number" id="song-name-pos" value="100">
+<br>
+<label for="song-artist-pos">曲师位置：</label><input type="number" id="song-artist-pos" value="200">
+<br>
+<br>
+<label for="song-name">曲名：</label><br><textarea id="song-name"></textarea>
+<br>
+<label for="song-artist">曲师：</label><br><textarea id="song-artist"></textarea>
+<br>
 <br>
 <button type="button" id="start-button">开始</button>
 <button type="button" id="download">下载</button>
