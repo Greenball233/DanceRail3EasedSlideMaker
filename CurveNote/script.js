@@ -118,7 +118,7 @@ function start() {
                 ((yEndValue - yStartValue) * j / subdivision + yStartValue).toFixed(5),
                 xPos,
                 noteWidthValue,
-                (j === 0) ? 1 : 0,
+                1,
                 (j === 0 || !noteTypes[3]) ? 0 : i - 1
             ]));
         }
