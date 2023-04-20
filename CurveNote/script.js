@@ -129,7 +129,7 @@ function start() {
                 (j === 0) ? noteTypes[0] : ((j !== subdivision || isCenterValue) ? noteTypes[1] : noteTypes[2]),
                 ((yEndValue - yStartValue) * j / subdivision + yStartValue).toFixed(5),
                 isSamePos ? xStartValue : xPos,
-                isSameWidth ? noteWidthStartValue : xRight - xPos,
+                isSameWidth ? noteWidthStartValue : (xRight - xPos),
                 1,
                 (j === 0 || !noteTypes[3]) ? 0 : i - 1
             ]));
@@ -199,7 +199,7 @@ function startWithNotes() {
                 noteTypes[1],
                 ((yEndValue - yStartValue) * j / subdivision + yStartValue).toFixed(5),
                 isSamePos ? xStartValue : xPos,
-                isSameWidth ? noteWidthStartValue : xRight,
+                isSameWidth ? noteWidthStartValue : (xRight - xPos),
                 1,
                 (!noteTypes[3]) ? 0 : ((j === 1) ? startNoteArgs[0] : i - 1)
             ]));
