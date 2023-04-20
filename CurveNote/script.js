@@ -49,8 +49,10 @@ const endNote = document.getElementById("end-note");
 const startWithNote = document.getElementById("start-with-note");
 const outputStartAndEnd = document.getElementById("output-start-and-end");
 
-const easing = document.getElementById("easing");
-const noteWidth = document.getElementById("note-width");
+const leftEasing = document.getElementById("easing-left");
+const rightEasing = document.getElementById("easing-right");
+const noteWidthStart = document.getElementById("note-width-start");
+const noteWidthEnd = document.getElementById("note-width-end");
 const xStart = document.getElementById("x-start");
 const xEnd = document.getElementById("x-end");
 const yStart = document.getElementById("y-start");
@@ -60,7 +62,10 @@ const noteSubdivition = document.getElementById("subdivision");
 const noteId = document.getElementById("note-id");
 startButton.addEventListener("click", start);
 startWithNote.addEventListener("click", startWithNotes)
-noteWidth.addEventListener("input", function () {
+noteWidthStart.addEventListener("input", function () {
+    if (this.value < 0.5) this.value = 0.5;
+});
+noteWidthEnd.addEventListener("input", function () {
     if (this.value < 0.5) this.value = 0.5;
 });
 noteId.addEventListener("input", function () {
@@ -91,17 +96,23 @@ function start() {
     let xEndValue = parseFloat(xEnd.value);
     let yStartValue = parseFloat(yStart.value);
     let yEndValue = parseFloat(yEnd.value);
-    let easingId = easing.selectedIndex + 1;
+    let leftEasingId = leftEasing.selectedIndex + 1;
+    let rightEasingId = rightEasing.selectedIndex + 1;
     let subdivision = parseInt(noteSubdivition.value);
-    let noteWidthValue = parseFloat(noteWidth.value);
+    let noteWidthStartValue = parseFloat(noteWidthStart.value);
+    let noteWidthEndValue = parseFloat(noteWidthEnd.value);
     let outputFirstNoteValue = outputFirstNote.checked;
     let isCenterValue = isCenter.checked;
+    let isSamePos = Math.abs(xStartValue - xEndValue) < 0.01;
+    let isSameWidth = Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01;
     if (yStartValue >= yEndValue) {
         output.value = "错误：开始时间大于等于结束时间";
         return;
     }
-    easing.disabled = true;
-    noteWidth.disabled = true;
+    leftEasing.disabled = true;
+    rightEasing.disabled = true;
+    noteWidthStart.disabled = true;
+    noteWidthEnd.disabled = true;
     xStart.disabled = true;
     xEnd.disabled = true;
     yStart.disabled = true;
@@ -110,14 +121,15 @@ function start() {
     noteSubdivition.disabled = true;
     noteId.disabled = true;
     for (let j = 0; j <= subdivision; j++) {
-        let xPos = lerp(xStartValue, xEndValue, easingId, j / subdivision).toFixed(2);
+        let xPos = lerp(xStartValue, xEndValue, leftEasingId, j / subdivision).toFixed(2);
+        let xRight = lerp(xStartValue + noteWidthStartValue, xEndValue + noteWidthEndValue, rightEasingId, j / subdivision).toFixed(2);
         if (!(outputFirstNoteValue === false && j === 0)) {
             stringBuilder.append(noteBuilder([
                 i,
                 (j === 0) ? noteTypes[0] : ((j !== subdivision || isCenterValue) ? noteTypes[1] : noteTypes[2]),
                 ((yEndValue - yStartValue) * j / subdivision + yStartValue).toFixed(5),
-                xPos,
-                noteWidthValue,
+                isSamePos ? xStartValue : xPos,
+                isSameWidth ? noteWidthStartValue : xRight - xPos,
                 1,
                 (j === 0 || !noteTypes[3]) ? 0 : i - 1
             ]));
@@ -126,8 +138,10 @@ function start() {
     }
     output.value = stringBuilder.toString();
     noteId.value = i.toString();
-    easing.disabled = false;
-    noteWidth.disabled = false;
+    leftEasing.disabled = false;
+    rightEasing.disabled = false;
+    noteWidthStart.disabled = false;
+    noteWidthEnd.disabled = false;
     xStart.disabled = false;
     xEnd.disabled = false;
     yStart.disabled = false;
@@ -158,23 +172,34 @@ function startWithNotes() {
     let xEndValue = parseFloat(endNoteArgs[3]);
     let yStartValue = parseFloat(startNoteArgs[2]);
     let yEndValue = parseFloat(endNoteArgs[2]);
-    let easingId = easing.selectedIndex + 1;
+    let leftEasingId = leftEasing.selectedIndex + 1;
+    let rightEasingId = rightEasing.selectedIndex + 1;
     let subdivision = parseInt(noteSubdivition.value);
-    let noteWidthValue = parseFloat(startNoteArgs[4]);
+    let noteWidthStartValue = parseFloat(startNoteArgs[4]);
+    let noteWidthEndValue = parseFloat(endNoteArgs[4]);
+    let isSamePos = Math.abs(xStartValue - xEndValue) < 0.01;
+    let isSameWidth = Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01;
     if (yStartValue >= yEndValue) {
         output.value = "错误：开始时间大于等于结束时间";
+        startNote.disabled = false;
+        endNote.disabled = false;
         return;
     }
+    leftEasing.disabled = true;
+    rightEasing.disabled = true;
+    noteWidthStart.disabled = true;
+    noteWidthEnd.disabled = true;
     if (!outputStartAndEndValue) stringBuilder.append(startNoteRaw);
     for (let j = 0; j <= subdivision; j++) {
         if (j !== subdivision && j !== 0) {
-            let xPos = lerp(xStartValue, xEndValue, easingId, j / subdivision).toFixed(2);
+            let xPos = lerp(xStartValue, xEndValue, leftEasingId, j / subdivision).toFixed(2);
+            let xRight = lerp(xStartValue + noteWidthStartValue, xEndValue + noteWidthEndValue, rightEasingId, j / subdivision).toFixed(2);
             stringBuilder.append(noteBuilder([
                 i,
                 noteTypes[1],
                 ((yEndValue - yStartValue) * j / subdivision + yStartValue).toFixed(5),
-                xPos,
-                noteWidthValue,
+                isSamePos ? xStartValue : xPos,
+                isSameWidth ? noteWidthStartValue : xRight,
                 1,
                 (!noteTypes[3]) ? 0 : ((j === 1) ? startNoteArgs[0] : i - 1)
             ]));
@@ -190,6 +215,10 @@ function startWithNotes() {
     output.value = stringBuilder.toString();
     startNote.value = endNoteRaw;
     endNote.value = "";
+    leftEasing.disabled = false;
+    rightEasing.disabled = false;
+    noteWidthStart.disabled = false;
+    noteWidthEnd.disabled = false;
     startNote.disabled = false;
     endNote.disabled = false;
 }

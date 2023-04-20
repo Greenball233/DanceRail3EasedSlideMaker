@@ -35,7 +35,8 @@
         <option>Flick(Down)</option>
         <option>Flick(No Direction)</option>
     </select>
-    <label for="note-width">note宽度：</label><input type="number" id="note-width" step="0.01" value="4">
+    <label for="note-width-start">note起始宽度：</label><input type="number" id="note-width-start" step="0.01" value="4">
+    <label for="note-width-end">note终止宽度：</label><input type="number" id="note-width-end" step="0.01" value="4">
     <br>
     <br>
     <label for="x-start">横坐标起始：</label><input type="number" id="x-start" step="0.01" value="0">
@@ -46,8 +47,40 @@
     <label for="y-end">纵坐标（时间）结束：</label><input type="number" id="y-end" step="0.00001" value="0">
     <br>
     <br>
-    <label for="easing">缓动编号(1~29)：</label>
-    <select id="easing">
+    <label for="easing-left">左侧缓动编号(1~29)：</label>
+    <select id="easing-left">
+        <option>Linear</option>
+        <option>OutSine</option>
+        <option>InSine</option>
+        <option>OutQuad</option>
+        <option>InQuad</option>
+        <option>InOutSine</option>
+        <option>InOutQuad</option>
+        <option>OutCubic</option>
+        <option>InCubic</option>
+        <option>OutQuart</option>
+        <option>InQuart</option>
+        <option>InOutCubic</option>
+        <option>InOutQuart</option>
+        <option>OutQuint</option>
+        <option>InQuint</option>
+        <option>OutExpo</option>
+        <option>InExpo</option>
+        <option>OutCirc</option>
+        <option>InCirc</option>
+        <option>OutBack</option>
+        <option>InBack</option>
+        <option>InOutCirc</option>
+        <option>InOutBack</option>
+        <option>OutElastic</option>
+        <option>InElastic</option>
+        <option>OutBounce</option>
+        <option>InBounce</option>
+        <option>InOutBounce</option>
+        <option>InOutElastic</option>
+    </select>
+    <label for="easing-right">右侧缓动编号(1~29)：</label>
+    <select id="easing-right">
         <option>Linear</option>
         <option>OutSine</option>
         <option>InSine</option>
