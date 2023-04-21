@@ -104,7 +104,7 @@ function start() {
     let outputFirstNoteValue = outputFirstNote.checked;
     let isCenterValue = isCenter.checked;
     let isSamePos = Math.abs(xStartValue - xEndValue) < 0.01;
-    let isSameWidth = Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01;
+    let isSameWidth = (Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01) && (leftEasingId === rightEasingId);
     if (yStartValue >= yEndValue) {
         output.value = "错误：开始时间大于等于结束时间";
         return;
@@ -178,7 +178,7 @@ function startWithNotes() {
     let noteWidthStartValue = parseFloat(startNoteArgs[4]);
     let noteWidthEndValue = parseFloat(endNoteArgs[4]);
     let isSamePos = Math.abs(xStartValue - xEndValue) < 0.01;
-    let isSameWidth = Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01;
+    let isSameWidth = (Math.abs(noteWidthStartValue - noteWidthEndValue) < 0.01) && (leftEasingId === rightEasingId);
     if (yStartValue >= yEndValue) {
         output.value = "错误：开始时间大于等于结束时间";
         startNote.disabled = false;
