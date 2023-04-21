@@ -228,7 +228,7 @@ function parseNote(raw) {
 }
 
 function lerp(a, b, easingId, pos) {
-    return tween[easingId](pos) * (b - a) + a;
+    return Math.abs(a - b) < 0.01 ? a.toFixed(2) : (tween[easingId](pos) * (b - a) + a);
 }
 
 function noteBuilder(args) {
