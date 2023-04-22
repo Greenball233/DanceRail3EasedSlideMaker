@@ -160,9 +160,15 @@ function startWithNotes() {
     let endNoteArgs = parseNote(endNoteRaw);
     if (startNoteArgs.length < 7) {
         output.value = "错误: 起始note不合法";
+        startNote.disabled = false;
+        endNote.disabled = false;
+        return;
     }
     if (endNoteArgs.length < 7) {
         output.value = "错误: 终止note不合法";
+        startNote.disabled = false;
+        endNote.disabled = false;
+        return;
     }
     let stringBuilder = new StringBuilder();
     let noteTypes = notesTypes[typesNotes[endNoteArgs[1]]];
