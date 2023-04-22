@@ -209,12 +209,10 @@ function startWithNotes() {
                 1,
                 (!noteTypes[3]) ? 0 : ((j === 1) ? startNoteArgs[0] : i - 1)
             ]));
-        } else if (!outputStartAndEndValue) {
-            if (j === subdivision) {
-                endNoteArgs[0] = i;
-                endNoteArgs[6] = i - 1;
-                stringBuilder.append(noteBuilder(endNoteArgs));
-            }
+        } else if (j === subdivision) {
+            endNoteArgs[0] = i;
+            endNoteArgs[6] = i - 1;
+            !outputStartAndEndValue ? (stringBuilder.append(noteBuilder(endNoteArgs))) : (endNoteRaw = noteBuilder(endNoteArgs));
         }
         i++;
     }
@@ -234,7 +232,7 @@ function parseNote(raw) {
 }
 
 function lerp(a, b, easingId, pos) {
-    return Math.abs(a - b) < 0.01 ? a.toFixed(2) : (tween[easingId](pos) * (b - a) + a);
+    return Math.abs(a - b) < 0.01 ? a : (tween[easingId](pos) * (b - a) + a);
 }
 
 function noteBuilder(args) {
