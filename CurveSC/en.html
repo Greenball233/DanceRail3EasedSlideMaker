@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DanceRail3 Curve SC Generator</title>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+<noscript>Error: The browser doesn't support Javascript or Javascript is disabled.</noscript>
+<a href="../en.html" class="back">Return to home page</a>
+<h2>DanceRail3 Curve SC Generator</h2>
+<br>
+<div class="settings">
+    <label for="input">Enter the whole SC content: </label><br><textarea id="input"></textarea>
+    <br>
+    <br>
+    <button type="button" id="generate">Generate SC table</button>
+    <button id="hint" type="button">Ease id</button>
+    <br>
+    <br>
+    <div class="serialized-table-container hidden" id="serialized-table-container">
+        <table id="serialized-sc-table">
+            <tr>
+                <th>Do lerp</th>
+                <th>SCI</th>
+                <th>SC</th>
+                <th>Ease id</th>
+                <th>Lerp precision (how many pieces divide to)</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+<button onclick="startLerp()" type="button" id="start-lerp">开始插值</button>
+<label for="output">Output: </label><textarea readonly="readonly" id="output"></textarea>
+<div id="hint-background" class="hidden"></div>
+<div id="hint-container" class="hidden">
+    <br>
+    <a href="https://easings.net/" target="_blank">Click this link for more information</a>
+    <br>
+    <table>
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Linear</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>OutSine</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>InSine</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>OutQuad</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>InQuad</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>InOutSine</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>InOutQuad</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>OutCubic</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>InCubic</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>OutQuart</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>InQuart</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>InOutCubic</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>InOutQuart</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>OutQuint</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>InQuint</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>OutExpo</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>InExpo</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>OutCirc</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>InCirc</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>OutBack</td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>InBack</td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>InOutCirc</td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>InOutBack</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>OutElastic</td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>InElastic</td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>OutBounce</td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>InBounce</td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>InOutBounce</td>
+        </tr>
+        <tr>
+            <td>29</td>
+            <td>InOutElastic</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../lib.js"></script>
+<script src="script.js"></script>
+</html>

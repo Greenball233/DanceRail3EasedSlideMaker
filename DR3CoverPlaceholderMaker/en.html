@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DanceRail3 Cover (Official placeholder version) Generator</title>
+    <link href="./main.css" rel="stylesheet">
+</head>
+<body>
+<noscript>Error: The browser doesn't support Javascript or Javascript is disabled.</noscript>
+<a href="../en.html" class="back">Return to home page</a>
+<h2>DanceRail3 Cover (Official placeholder version) Generator</h2>
+<br>
+<br>
+<canvas id="canvas" width="300" height="300"></canvas>
+<br>
+<br>
+<label for="song-name-size">Font size of the song name: </label><input type="number" step="1" id="song-name-size" value="42">
+<br>
+<label for="song-artist-size">Font size of the song artist: </label><input type="number" step="1" id="song-artist-size" value="37">
+<br>
+<br>
+<label for="song-name-pos">Position of the song name: </label><input type="number" id="song-name-pos" value="100">
+<br>
+<label for="song-artist-pos">Position of the song artist: </label><input type="number" id="song-artist-pos" value="200">
+<br>
+<br>
+<label for="song-name">Song name: </label><br><textarea id="song-name"></textarea>
+<br>
+<label for="song-artist">Song artist: </label><br><textarea id="song-artist"></textarea>
+<br>
+<br>
+<button type="button" id="start-button">Generate</button>
+<button type="button" id="download">Download</button>
+
+</body>
+<script src="../lib.js"></script>
+<script src="./script.js"></script>
+</html>

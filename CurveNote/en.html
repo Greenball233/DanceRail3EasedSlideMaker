@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DanceRail3 Curve Note Generator</title>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+<noscript>Error: The browser doesn't support Javascript or Javascript is disabled.</noscript>
+<a href="../en.html" class="back">Return to home page</a>
+<h2>DanceRail3 Curve Note Generator</h2>
+<br>
+<div class="settings">
+    <label for="note-id">Note ID for Start: </label><input type="number" id="note-id" value="10000">
+    <br>
+    (Warning: the not id will increase automatically, We suggest using organize to make sure that the slide head is the last note in chart)
+    <br>
+    <br>
+    <label for="note-type">Note Type: </label>
+    <select id="note-type">
+        <option>Slide</option>
+        <option>Hold</option>
+        <option>BOOM</option>
+        <option>HPass</option>
+        <option>LPass</option>
+        <option>Mover</option>
+        <option>Slide(Start Only)</option>
+        <option>Hold(Start Only)</option>
+        <option>BOOM(Start Only)</option>
+        <option>Tap</option>
+        <option>ExTap</option>
+        <option>Flick(Left)</option>
+        <option>Flick(Right)</option>
+        <option>Flick(Up)</option>
+        <option>Flick(Down)</option>
+        <option>Flick(No Direction)</option>
+    </select>
+    <label for="note-width-start">Note Width for Start: </label><input type="number" id="note-width-start" step="0.01" value="4">
+    <label for="note-width-end">Note Width for End: </label><input type="number" id="note-width-end" step="0.01" value="4">
+    <br>
+    <br>
+    <label for="x-start">Pos X for Start: </label><input type="number" id="x-start" step="0.01" value="0">
+    <label for="x-end">Pos X for End: </label><input type="number" id="x-end" step="0.01" value="0">
+    <br>
+    <br>
+    <label for="y-start">Time Start: </label><input type="number" id="y-start" step="0.00001" value="0">
+    <label for="y-end">Time End: </label><input type="number" id="y-end" step="0.00001" value="0">
+    <br>
+    <br>
+    <label for="easing-left">Ease ID for Left Side: </label>
+    <select id="easing-left">
+        <option>Linear</option>
+        <option>OutSine</option>
+        <option>InSine</option>
+        <option>OutQuad</option>
+        <option>InQuad</option>
+        <option>InOutSine</option>
+        <option>InOutQuad</option>
+        <option>OutCubic</option>
+        <option>InCubic</option>
+        <option>OutQuart</option>
+        <option>InQuart</option>
+        <option>InOutCubic</option>
+        <option>InOutQuart</option>
+        <option>OutQuint</option>
+        <option>InQuint</option>
+        <option>OutExpo</option>
+        <option>InExpo</option>
+        <option>OutCirc</option>
+        <option>InCirc</option>
+        <option>OutBack</option>
+        <option>InBack</option>
+        <option>InOutCirc</option>
+        <option>InOutBack</option>
+        <option>OutElastic</option>
+        <option>InElastic</option>
+        <option>OutBounce</option>
+        <option>InBounce</option>
+        <option>InOutBounce</option>
+        <option>InOutElastic</option>
+    </select>
+    <label for="easing-right">Ease ID for Right Side: </label>
+    <select id="easing-right">
+        <option>Linear</option>
+        <option>OutSine</option>
+        <option>InSine</option>
+        <option>OutQuad</option>
+        <option>InQuad</option>
+        <option>InOutSine</option>
+        <option>InOutQuad</option>
+        <option>OutCubic</option>
+        <option>InCubic</option>
+        <option>OutQuart</option>
+        <option>InQuart</option>
+        <option>InOutCubic</option>
+        <option>InOutQuart</option>
+        <option>OutQuint</option>
+        <option>InQuint</option>
+        <option>OutExpo</option>
+        <option>InExpo</option>
+        <option>OutCirc</option>
+        <option>InCirc</option>
+        <option>OutBack</option>
+        <option>InBack</option>
+        <option>InOutCirc</option>
+        <option>InOutBack</option>
+        <option>OutElastic</option>
+        <option>InElastic</option>
+        <option>OutBounce</option>
+        <option>InBounce</option>
+        <option>InOutBounce</option>
+        <option>InOutElastic</option>
+    </select>
+    <label for="subdivision">Lerp precision (how many pieces divide to): </label><input type="number" id="subdivision" value="2">
+    <br>
+    <br>
+    <input type="checkbox" id="output-first-note" checked="checked"><label for="output-first-note">Output the first note</label>
+    <input type="checkbox" id="is-center"><label for="is-center">Change "End" to "Center"</label>
+    <br>
+    <br>
+    <button type="button" id="start">Generate</button>
+    <br>
+    <br>
+    Or, enter the note statement of the Start Note and the End Note here (Please enter the Ease ID and Lerp Precision above!)
+    <br>
+    <br>
+    <label for="start-note">Note for Start: </label><input type="text" id="start-note">
+    <br>
+    <br>
+    <label for="end-note">Note for End: </label><input type="text" id="end-note">
+    <br>
+    <br>
+    <button type="button" id="start-with-note">Generate with Notes</button>
+    <input type="checkbox" id="output-start-and-end"><label for="output-start-and-end">Don't output the first note and the last note and add 10000 to Note ID</label>
+</div>
+<br>
+<br>
+<label for="output">Output: </label><textarea readonly="readonly" id="output"></textarea>
+</body>
+<script src="../lib.js"></script>
+<script src="script.js"></script>
+</html>
